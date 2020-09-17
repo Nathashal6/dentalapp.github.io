@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+  <head>
+    <title>formDemo.html</title>
+    <meta charset = "UTF-8" />
+	 <script type="text/javascript">
+function loadDiagnosis() {
+alert("bb"); 
+const configurationObject = {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  body: JSON.stringify({
+    "desc": "abc",
+    "mobile": "abc"
+  })
+};
+return fetch('http://localhost:3000/description/dkdkdkd', configurationObject)
+	.then((response)=>response.json()) //   <------ this line 
+	.then((response)=>{
+		//let count = response.statusText[0][0] ;
+		console.log(response);
+		//if(count == " ")
+		//{
+		//	alert("Process failed. Please retry with valid data")
+		//}
+		//else
+		//{
+		//	alert("success");
+		//}
+	});
+ }
+  </script>
+  </head>
+  <body onload="loadDiagnosis()">
+    <form method="GET" action="" onload="return loadDiagnosis()">
+    <h1>Diagnosis</h1>
+    <p>Dear member, based on your symptoms you are suffering from Dengue</p>
+	</form>
+  </body>
+</html>

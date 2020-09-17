@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+  <head>
+    <title>formDemo.html</title>
+  <link rel="stylesheet" type="text/css" href="css/form.css">
+	  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/scrolling-nav.css" rel="stylesheet">
+  <meta charset="utf-8">
+    <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  
+  <!-- Fontawesome CSS -->
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  
+  <!-- Feathericon CSS -->
+  <link rel="stylesheet" href="assets/css/feathericon.min.css">
+  
+  <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+	  <script type="text/javascript">
+function loadDoc() { 
+email = document.getElementById("email").value;
+symptoms = document.getElementById("symptoms").value;
+const configurationObject = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  body: JSON.stringify({
+    "desc": symptoms,
+    "mobile": email
+  })
+};
+return fetch('http://localhost:3000/description', configurationObject)
+	.then((response)=>response.json()) //   <------ this line 
+	.then((response)=>{
+		let count = response.statusText ;
+		console.log(count);
+		if(count == "e")
+		{
+			alert("Process failed. Please retry with valid data");
+		}
+		else
+		{
+			//alert("success");
+		}
+	});
+ }
+  </script>
+  </head>
+<body id="page-top">
+<div class="main-wrapper">
+		
+			<!-- Header -->
+            <div class="header">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="index.html" class="logo">
+						<img src="assets/img/logo.png" alt="Logo">
+					</a>
+					<a href="index.html" class="logo logo-small">
+						<img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+			</div>
+
+   <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title"> 
+								<span>Main</span>
+							</li>
+							<li> 
+								<a href="home.html"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+							</li>
+							<li class="active"> 
+								<a href="userProfile.html"><i class="fe fe-layout"></i> <span>Blacklist</span></a>
+							</li>
+							<li> 
+							<a href="Diagnosis.html"><i class="fe fe-users"></i> <span>Diagnosis</span></a>
+							</li>		
+							<li> 
+								<a href="searchUser_1.html"><i class="fe fe-users"></i> <span>Update User</span></a>
+							</li>
+							<!--<li> 
+								<a href="doctor-list.html"><i class="fe fe-user-plus"></i> <span>Doctors</span></a>
+							</li>
+							<li> 
+								<a href="patient-list.html"><i class="fe fe-user"></i> <span>Patients</span></a>
+							</li>
+							<li> 
+								<a href="reviews.html"><i class="fe fe-star-o"></i> <span>Reviews</span></a>
+							</li>
+							<li> 
+								<a href="transactions-list.html"><i class="fe fe-activity"></i> <span>Transactions</span></a>
+							</li>
+							<li> 
+								<a href="settings.html"><i class="fe fe-vector"></i> <span>Settings</span></a>
+							</li>-->
+							<li class="submenu">
+								<a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="invoice-report.html">Invoice Reports</a></li>
+								</ul>
+							</li>
+							<li class="menu-title"> 
+								<span>Pages</span>
+							</li>
+							<li> 
+								<a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-document"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="login.html"> Login </a></li>
+									<li><a href="register.html"> Register </a></li>
+									<li><a href="forgot-password.html"> Forgot Password </a></li>
+									<li><a href="lock-screen.html"> Lock Screen </a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-warning"></i> <span> Error Pages </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="error-404.html">404 Error </a></li>
+									<li><a href="error-500.html">500 Error </a></li>
+								</ul>
+							</li>
+							<li> 
+								<a href="blank-page.html"><i class="fe fe-file"></i> <span>Blank Page</span></a>
+							</li>
+							<li class="menu-title"> 
+								<span>UI Interface</span>
+							</li>
+							<li> 
+								<a href="components.html"><i class="fe fe-vector"></i> <span>Components</span></a>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-layout"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="form-basic-inputs.html">Basic Inputs </a></li>
+									<li><a href="form-input-groups.html">Input Groups </a></li>
+									<li><a href="form-horizontal.html">Horizontal Form </a></li>
+									<li><a href="form-vertical.html"> Vertical Form </a></li>
+									<li><a href="form-mask.html"> Form Mask </a></li>
+									<li><a href="form-validation.html"> Form Validation </a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="tables-basic.html">Basic Tables </a></li>
+									<li><a href="data-tables.html">Data Table </a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="javascript:void(0);"><i class="fe fe-code"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li class="submenu">
+										<a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
+										<ul style="display: none;">
+											<li><a href="javascript:void(0);"><span>Level 2</span></a></li>
+											<li class="submenu">
+												<a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
+												<ul style="display: none;">
+													<li><a href="javascript:void(0);">Level 3</a></li>
+													<li><a href="javascript:void(0);">Level 3</a></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="javascript:void(0);"> <span>Level 1</span></a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+                </div>
+            </div>
+    <form method="GET" action="result.html">
+      <fieldset>
+        <p>
+          <label>Symptoms</label>
+          <input type="text" id ="symptoms" name="symptoms">
+        </p>
+        <p>
+          <label>Email</label>
+          <input type="text" id="email" name="email">
+        </p>
+		<p>
+		<input type="submit" value="Submit"> 
+		</p>
+      </fieldset>
+    </form>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <!--<script src="js/scrolling-nav.js"></script>-->
+
+</body>
+</body>
+</body>
+</html>
